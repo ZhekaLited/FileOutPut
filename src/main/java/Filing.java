@@ -1,45 +1,35 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
+
 
 public class Filing {
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Path? ");
         Scanner obj = new Scanner(System.in);
-        String path = obj.next();
-        System.out.println("Name of Directory? ");
-        path = path + obj.next();
-        File file = new File(path);
-                //File.createTempFile("input", null);
-        if (!file.exists()) file.mkdir();
 
-        PrintWriter writer = new PrintWriter(path + "\\input1.txt");
+        File file = new File("D:/Android/input1.txt");
 
-        Scanner sc = new Scanner(System.in);
+        FileWriter writer = new FileWriter(file,true);
 
-        while (true) {
-            System.out.println("Please enter your words(quit to exit program): ");
-            String input = sc.nextLine();
-            if (input.equalsIgnoreCase("q")) {
-                break;
+
+            while (true) {
+                System.out.println("Please enter your words(quit to exit program): ");
+                String s = "\n====================\n";
+                String input = obj.nextLine();
+                if (input.equalsIgnoreCase("q")) {
+                    break;
+                }
+                writer.write(input+s);
             }
-            writer.println(input);
+
+            writer.close();
         }
-
-        writer.close();
     }
-}
-
-
-
-
      //   file.getParentFile().mkdirs();
-
     //    }
   //  }
 //}77
-
-
         /* run();
     }
     private static void run() throws Exception {
@@ -50,6 +40,8 @@ public class Filing {
         PrintWriter writer = new PrintWriter("D:\\Android\\output.txt");
         writer.print(a + b);
         writer.close();
+
+
     }
 }
 */
